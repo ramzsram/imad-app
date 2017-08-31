@@ -19,7 +19,7 @@ app.get('/ui/style.css', function (req, res) {
 });
 
 function hash (input) {
-    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512 ,'sha512');
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512 ,'sha256');
     return hashed.toString('hex');
 }
 
@@ -27,9 +27,6 @@ app.get('/hash/:input', function(req, res){
     var hashedString= hash(req.params.input, 'Ramsundar');
     res.send(hashedString);
 });
-
-
-
 
 
 
